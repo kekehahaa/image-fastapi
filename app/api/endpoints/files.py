@@ -58,7 +58,7 @@ async def upload_video_by_link(background_tasks: BackgroundTasks,
             i += 1
         frames += frame
     if video_link.zipped:
-        zipped_path = file_to_zip(Path(settings.DB_PATH) / path / Path("frames"))
+        zipped_path = file_to_zip(Path(settings.DB_PATH) / path.parent / Path("frames"))
         background_tasks.add_task(delete_zip_file, zipped_path)
         return FileResponse(zipped_path, media_type="application/zip", filename=Path(zipped_path).stem)
     return frames

@@ -1,4 +1,4 @@
-import yt_dlp, asyncio, os
+import yt_dlp, asyncio, os, shutil
 
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
@@ -23,8 +23,9 @@ def download_video_sync(url: str, output_path : str, quality: str='bestvideo[ext
         video_file = ydl.prepare_filename(info_dict)
     
     out_path = Path(output_path) / Path(video_file).stem
-    if not out_path.exists():
-        out_path.mkdir(parents=True)
+    if out_path.exists():
+        shutil.rmtree(out_path)
+    out_path.mkdir(parents=True)
 
     ydl_opts = {
         'format': quality,

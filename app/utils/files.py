@@ -17,16 +17,10 @@ async def upload_video_local(file: UploadFile):
     val.check_file_data(file)  # check if file is uploaded
     val.check_video_format(file)  # check if file is video
     path = settings.DB_PATH
-    # try:
     full_path = Path(path) / Path(file.filename).stem
-    if not os.path.exists(path):
-        os.makedirs(path, exist_ok=True)
-    os.makedirs(full_path, exist_ok=True)
-    # except FileExistsError:
-    #     raise HTTPException(
-    #         status_code=status.HTTP_409_CONFLICT,
-    #         detail=cnst.BAD_W_FILE.format(path)
-    #     )
+    if full_path.exists():
+        shutil.rmtree(full_path)
+    full_path.mkdir()
     full_path = full_path / file.filename
     try:
         content = file.file.read()
@@ -44,7 +38,10 @@ async def upload_video_local(file: UploadFile):
 
 async def upload_video_link(link: str):
     val.check_youtube_link(link)
-    path = settings.DB_PATH
+    path = Path(settings.DB_PATH)
+    if path.exists():
+        shutil.rmtree(path)
+    path.mkdir()
     try:
         video_file = await donwload_video_async(link, path)
     except DownloadError:
