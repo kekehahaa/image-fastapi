@@ -14,6 +14,7 @@ Ensure you have the following installed:
 ## Запуск проекта
 
 - ```bash
+    cd procject/image-fatapi
     docker-compose up --build
     ```
 
