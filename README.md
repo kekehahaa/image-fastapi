@@ -2,6 +2,21 @@
 
 Этот проект предоставляет API для работы с видео, включая загрузку, обработку.
 
+## Requirements
+
+Ensure you have the following installed:
+
+- [Python 3.11+](https://www.python.org/downloads/)
+- [Virtual Environments with Python 3.11+](https://docs.python.org/3/tutorial/venv.html)
+- [Docker](https://docs.docker.com/engine/install/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+## Запуск проекта
+
+- ```bash
+    docker-compose up --build
+    ```
+
 ## Описание эндпойнтов
 
 - ##### POST /video/upload/local
