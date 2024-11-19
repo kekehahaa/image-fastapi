@@ -39,9 +39,6 @@ async def upload_video_local(file: UploadFile):
 async def upload_video_link(link: str):
     val.check_youtube_link(link)
     path = Path(settings.DB_PATH)
-    if path.exists():
-        shutil.rmtree(path)
-    path.mkdir()
     try:
         video_file = await donwload_video_async(link, path)
     except DownloadError:

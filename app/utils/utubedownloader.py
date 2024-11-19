@@ -25,7 +25,7 @@ def download_video_sync(url: str, output_path : str, quality: str='bestvideo[ext
     out_path = Path(output_path) / Path(video_file).stem
     if out_path.exists():
         shutil.rmtree(out_path)
-    out_path.mkdir(parents=True)
+    out_path.mkdir()
 
     ydl_opts = {
         'format': quality,
