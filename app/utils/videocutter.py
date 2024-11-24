@@ -40,7 +40,7 @@ class VideoCutter:
             FFmpeg()
             .option("threads", str(os.cpu_count()))
             .input(self.file_path)
-            .output(out_path / save_pattern, vf=f"fps={fps}")
+            .output(out_path / save_pattern, vf=f"fps={fps}", qscale=0)
             )     
             await process.execute()
             return out_path
