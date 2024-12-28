@@ -99,7 +99,7 @@ else:
     print("Ошибка:", response.status_code)
     print("Ответ:", response.text)
 ```
-##### Вывод нашей программы, которая показывает содержимое отправленного нам zipfile с нарезанным фото.
+##### Вывод программы, которая показывает содержимое отправленного zipfile с нарезанным фото.
 ```zsh
 python train.py
 Содержимое архива: ['frame_00059.jpg', 'frame_00058.jpg', 'frame_00060.jpg', 'frame_00048.jpg', 'frame_00049.jpg', 'frame_00012.jpg', 'frame_00006.jpg',
